@@ -13,6 +13,24 @@ function startGame(){
     const difficulty = document.getElementById("difficulty");
     console.log(difficulty.value);
 
+    // // GENERIAMO 16 NUMERI RANDOM DIVERSI FRA LORO
+    const min = 1;
+    const max = 100;
+    const randomBombs = 16;
+
+    const arrayBombs = [];
+
+    while (arrayBombs.length < randomBombs) {
+        // Genero un numero casuale
+        const randomNumber = Math.floor(Math.random() * max) + min;
+
+        //SE L'ARRAY VUOTO NON INCLUDE IL NUMERO RANDOM, ALLORA PUSHO IL NUMERO RANDOM NELL'ARRAY
+        if (arrayBombs.includes(randomNumber) === false) {
+            arrayBombs.push(randomNumber);
+        }
+    }
+    console.log("Random Bombs", arrayBombs);
+
     // 1. RECUPERO IL CONTENITORE PADRE CHE DOVRA' CONTENERE LA GRIGLIA
     const gridElement = document.querySelector(".grid");
     //console.log(gridElement);
@@ -32,8 +50,7 @@ function startGame(){
     // CON UN CICLO PRENDO OGNI SINGOLA CELLA
     for(let i = 0; i < numOfCells; i++){
         const num = i + 1; 
-        console.log(num);
-
+        //console.log(num);
 
         // 2. CREO L'ELEMENTO OGGETTO CHE DOVRO' APPENDERE NEL CONTENITORE PADRE
         const gridCell = document.createElement("div");
@@ -48,27 +65,18 @@ function startGame(){
         //Quando l’utente clicca su ogni cella, la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata.
         // MI METTO IN ASCOLTO DEL CLICK SULLA CELLA
         gridCell.addEventListener("click", function(){
-            console.log("Hai cliccato la cella", num);
+            // console.log("Hai cliccato la cella", num);
             // QUANDO L'UTENTE CLICCA IL BACKGROUND-COLOR CAMBIERA'
-            this.classList.toggle("bg-azzure");
+            gridCell.classList.add("bg-azzure");
+
+            // PRENDO OGNI SINGOLO NUMERO PRESENTE NELL'ARRAY E CONTROLLO SE E' UGUALE AL NUMERO RANDOM GENERATO
+            for(let i= 0; i < arrayBombs.length; i++){
+                const bombCell = arrayBombs[i]; //number
+                if(parseInt(gridCell.innerHTML) === bombCell){
+                    console.log("è uguale");
+                    gridCell.classList.add("bg-red");
+                }
+            }
         })
     }
 }
-
-// // GENERIAMO 16 NUMERI RANDOM DIVERSI FRA LORO
-const min = 1;
-const max = 100;
-const randomBombs = 16;
-
-const arrayBombs = [];
-
-while (arrayBombs.length < randomBombs) {
-    // Genero un numero casuale
-    const randomNumber = Math.floor(Math.random() * max) + min;
-
-    //SE L'ARRAY VUOTO NON INCLUDE IL NUMERO RANDOM, ALLORA PUSHO IL NUMERO RANDOM NELL'ARRAY
-    if (arrayBombs.includes(randomNumber) === false) {
-        arrayBombs.push(randomNumber);
-    }
-}
-console.log("Random Bombs", arrayBombs);

@@ -26,6 +26,10 @@
     background-color: var(--azzure);
 }
 
+.bg-red{
+    background-color: red;;
+}
+
 /* LAYOUT */
 
 body{
