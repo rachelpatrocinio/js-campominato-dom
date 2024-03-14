@@ -17,7 +17,12 @@ function startGame(){
     const gridElement = document.querySelector(".grid");
     //console.log(gridElement);
 
+    //RECUPERO IL DIV CHE INFORMA "IL GIOCO E' TERMINATO"
+    const finishedGame = document.querySelector(".finished-game");
+
     gridElement.innerHTML="";
+    gridElement.classList.remove("pointer-events");
+    finishedGame.classList.replace("d-block", "d-none");
     // con difficoltà HARD (DEFAULT) => 100 caselle DA 1 e 100 (10 x 10)
     // con difficoltà MEDIUM => 81 caselle DA 1 e 81 (9 x 9)
     // con difficoltà EASY => 49 caselle DA 1 e 49 (7 x 7)
@@ -72,6 +77,10 @@ function startGame(){
             console.log("Hai cliccato la cella", num);
             // QUANDO L'UTENTE CLICCA IL BACKGROUND-COLOR CAMBIERA'
             gridCell.classList.add("bg-azzure");
+            //RECUPERO L'H4 CHE INFORMA I PUNTI
+            const scoreInfo = document.querySelector(".score");
+            console.log(scoreInfo);
+            scoreInfo.innerHTML++;
 
             // PRENDO OGNI SINGOLO NUMERO PRESENTE NELL'ARRAY E CONTROLLO SE E' UGUALE AL NUMERO RANDOM GENERATO
             for(let i= 0; i < arrayBombs.length; i++){
@@ -80,16 +89,10 @@ function startGame(){
                     console.log("Hai trovato una bomba!");
                     gridCell.classList.add("bg-red");
                     gridElement.classList.add("pointer-events");
+                    scoreInfo.innerHTML--;
 
-                    //RECUPERO IL DIV CHE INFORMA "IL GIOCO E' TERMINATO"
-                    const finishedGame = document.querySelector(".finished-game");
-                    console.log(finishedGame);
+                    //PRENDO IL DIV CHE INFORMA "IL GIOCO E' TERMINATO" E CI AGGIUNGO D-BLOCK
                     finishedGame.classList.replace("d-none", "d-block");
-
-                    //RECUPERO L'H4 CHE INFORMA I PUNTI
-                    const pointsInfo = document.querySelector(".points");
-                    console.log(pointsInfo);
-                    pointsInfo.innerHTML=`Il tuo punteggio è:!`;
                 }
             }
         })
