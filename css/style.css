@@ -30,6 +30,10 @@
     background-color: red;;
 }
 
+.pointer-events{
+    pointer-events: none;
+}
+
 /* LAYOUT */
 
 body{

@@ -77,8 +77,9 @@ function startGame(){
             for(let i= 0; i < arrayBombs.length; i++){
                 const bombCell = arrayBombs[i]; //number
                 if(parseInt(gridCell.innerHTML) === bombCell){
-                    console.log("è uguale");
+                    console.log("Hai trovato una bomba!");
                     gridCell.classList.add("bg-red");
+                    gridElement.classList.add("pointer-events");
                 }
             }
         })
