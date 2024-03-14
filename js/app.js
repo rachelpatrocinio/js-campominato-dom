@@ -76,7 +76,7 @@ function startGame(){
         gridCell.addEventListener("click", function(){
             console.log("Hai cliccato la cella", num);
             // QUANDO L'UTENTE CLICCA IL BACKGROUND-COLOR CAMBIERA'
-            gridCell.classList.add("bg-azzure");
+            gridCell.classList.add("bg-azzure","pointer-events");
             //RECUPERO L'H4 CHE INFORMA I PUNTI
             const scoreInfo = document.querySelector(".score");
             console.log(scoreInfo);
