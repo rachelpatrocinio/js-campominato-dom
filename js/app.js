@@ -18,7 +18,6 @@ function startGame(){
     //console.log(gridElement);
 
     gridElement.innerHTML="";
- 
     // con difficoltà HARD (DEFAULT) => 100 caselle DA 1 e 100 (10 x 10)
     // con difficoltà MEDIUM => 81 caselle DA 1 e 81 (9 x 9)
     // con difficoltà EASY => 49 caselle DA 1 e 49 (7 x 7)
@@ -56,3 +55,20 @@ function startGame(){
     }
 }
 
+// // GENERIAMO 16 NUMERI RANDOM DIVERSI FRA LORO
+const min = 1;
+const max = 100;
+const randomBombs = 16;
+
+const arrayBombs = [];
+
+while (arrayBombs.length < randomBombs) {
+    // Genero un numero casuale
+    const randomNumber = Math.floor(Math.random() * max) + min;
+
+    //SE L'ARRAY VUOTO NON INCLUDE IL NUMERO RANDOM, ALLORA PUSHO IL NUMERO RANDOM NELL'ARRAY
+    if (arrayBombs.includes(randomNumber) === false) {
+        arrayBombs.push(randomNumber);
+    }
+}
+console.log("Random Bombs", arrayBombs);
