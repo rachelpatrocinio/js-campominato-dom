@@ -1,0 +1,103 @@
+:root{
+    --white: #ffffff;
+    --acqua: #7FFFD3;
+    --azzure: #6FD1DA;
+}
+
+/* RESET */
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* UTILITIES */
+
+.d-flex{
+    display: flex;
+}
+
+.justify-content-between{
+    justify-content: space-between;
+}
+
+.bg-azzure{
+    background-color: var(--azzure);
+}
+
+/* LAYOUT */
+
+body{
+    background-color: var(--acqua);
+    flex-direction: column;
+    height: 100vh;
+}
+
+.container{
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* HEADER */
+
+.main-header{
+    background-color: var(--white);
+    height: 80px;
+    align-items: center;
+    padding: 0 20px;
+    flex-shrink: 0;
+}
+
+.main-header select{
+    padding: 5px;
+}
+
+.main-header .play-btn{
+    width: 100px;
+    padding: 5px;
+}
+
+/* MAIN */
+
+.main-content{
+    padding: 50px 0;
+    flex-grow: 1;
+}
+
+.grid{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.grid-cell{
+    border: 1px solid black;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+}
+
+.hard{
+    width: calc(100% / 7);
+}
+
+.medium{
+    width: calc(100% / 9);
+}
+
+.easy{
+    width: calc(100% / 10);
+}
+
+/* FOOTER */
+.main-footer{
+    height: 50px;
+    background-color: var(--white);
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 0 20px;
+}
