@@ -18,6 +18,14 @@
     display: flex;
 }
 
+.d-none{
+    display: none;
+}
+
+.d-block{
+    display: block;
+}
+
 .justify-content-between{
     justify-content: space-between;
 }
@@ -98,6 +106,11 @@ body{
 
 .easy{
     width: calc(100% / 10);
+}
+
+.finished-game{
+    text-align: center;
+    margin-top: 20px;
 }
 
 /* FOOTER */

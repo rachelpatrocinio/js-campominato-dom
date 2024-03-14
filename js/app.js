@@ -69,7 +69,7 @@ function startGame(){
         //Quando l’utente clicca su ogni cella, la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata.
         // MI METTO IN ASCOLTO DEL CLICK SULLA CELLA
         gridCell.addEventListener("click", function(){
-            // console.log("Hai cliccato la cella", num);
+            console.log("Hai cliccato la cella", num);
             // QUANDO L'UTENTE CLICCA IL BACKGROUND-COLOR CAMBIERA'
             gridCell.classList.add("bg-azzure");
 
@@ -80,8 +80,18 @@ function startGame(){
                     console.log("Hai trovato una bomba!");
                     gridCell.classList.add("bg-red");
                     gridElement.classList.add("pointer-events");
+
+                    //RECUPERO IL DIV CHE INFORMA "IL GIOCO E' TERMINATO"
+                    const finishedGame = document.querySelector(".finished-game");
+                    console.log(finishedGame);
+                    finishedGame.classList.replace("d-none", "d-block");
+
+                    //RECUPERO L'H4 CHE INFORMA I PUNTI
+                    const pointsInfo = document.querySelector(".points");
+                    console.log(pointsInfo);
+                    pointsInfo.innerHTML=`Il tuo punteggio è:!`;
                 }
             }
         })
     }
-}
+} //function startGame()
