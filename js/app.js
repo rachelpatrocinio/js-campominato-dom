@@ -71,29 +71,31 @@ function startGame(){
         gridElement.append(gridCell);
         // 4. INSERISCO IL NUMERO ALL'INTERNO DELL'ELEMENTO OGGETTO.
         gridCell.innerHTML += num;
+
+        //RECUPERO L'H4 CHE INFORMA I PUNTI
+        const scoreInfo = document.querySelector(".score");
+        scoreInfo.innerHTML=0;
+
         //Quando l’utente clicca su ogni cella, la cella cliccata si colora di azzurro ed emetto un messaggio in console con il numero della cella cliccata.
         // MI METTO IN ASCOLTO DEL CLICK SULLA CELLA
         gridCell.addEventListener("click", function(){
             console.log("Hai cliccato la cella", num);
             // QUANDO L'UTENTE CLICCA IL BACKGROUND-COLOR CAMBIERA'
             gridCell.classList.add("bg-azzure","pointer-events");
-            //RECUPERO L'H4 CHE INFORMA I PUNTI
-            const scoreInfo = document.querySelector(".score");
             console.log(scoreInfo);
+            //INCREMENTO IL CLICK
             scoreInfo.innerHTML++;
 
             // PRENDO OGNI SINGOLO NUMERO PRESENTE NELL'ARRAY E CONTROLLO SE E' UGUALE AL NUMERO RANDOM GENERATO
-            for(let i= 0; i < arrayBombs.length; i++){
-                const bombCell = arrayBombs[i]; //number
-                if(parseInt(gridCell.innerHTML) === bombCell){
-                    console.log("Hai trovato una bomba!");
-                    gridCell.classList.add("bg-red");
-                    gridElement.classList.add("pointer-events");
-                    scoreInfo.innerHTML--;
+            if(arrayBombs.includes(num)){
 
-                    //PRENDO IL DIV CHE INFORMA "IL GIOCO E' TERMINATO" E CI AGGIUNGO D-BLOCK
-                    finishedGame.classList.replace("d-none", "d-block");
-                }
+                console.log("Hai trovato una bomba!");
+                gridCell.classList.add("bg-red");
+                gridElement.classList.add("pointer-events");
+                scoreInfo.innerHTML--;
+
+                //PRENDO IL DIV CHE INFORMA "IL GIOCO E' TERMINATO" E CI AGGIUNGO D-BLOCK
+                finishedGame.classList.replace("d-none", "d-block");
             }
         })
     }
