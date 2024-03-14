@@ -13,11 +13,30 @@ function startGame(){
     const difficulty = document.getElementById("difficulty");
     console.log(difficulty.value);
 
-    // // GENERIAMO 16 NUMERI RANDOM DIVERSI FRA LORO
-    const min = 1;
-    const max = 100;
-    const randomBombs = 16;
+    // 1. RECUPERO IL CONTENITORE PADRE CHE DOVRA' CONTENERE LA GRIGLIA
+    const gridElement = document.querySelector(".grid");
+    //console.log(gridElement);
 
+    gridElement.innerHTML="";
+    // con difficoltà HARD (DEFAULT) => 100 caselle DA 1 e 100 (10 x 10)
+    // con difficoltà MEDIUM => 81 caselle DA 1 e 81 (9 x 9)
+    // con difficoltà EASY => 49 caselle DA 1 e 49 (7 x 7)
+
+    const min = 1;
+    let max = 100;
+    let size = 10;
+    if(difficulty.value === "medium"){
+        size = 9;
+        max = 81;
+    }else if(difficulty.value === "hard"){
+        size = 7;
+        max = 49;
+    }
+    const numOfCells = size * size;
+
+    // // GENERIAMO 16 NUMERI RANDOM DIVERSI FRA LORO
+
+    const randomBombs = 16;
     const arrayBombs = [];
 
     while (arrayBombs.length < randomBombs) {
@@ -31,21 +50,6 @@ function startGame(){
     }
     console.log("Random Bombs", arrayBombs);
 
-    // 1. RECUPERO IL CONTENITORE PADRE CHE DOVRA' CONTENERE LA GRIGLIA
-    const gridElement = document.querySelector(".grid");
-    //console.log(gridElement);
-
-    gridElement.innerHTML="";
-    // con difficoltà HARD (DEFAULT) => 100 caselle DA 1 e 100 (10 x 10)
-    // con difficoltà MEDIUM => 81 caselle DA 1 e 81 (9 x 9)
-    // con difficoltà EASY => 49 caselle DA 1 e 49 (7 x 7)
-    let size = 10;
-    if(difficulty.value === "medium"){
-        size = 9;
-    }else if(difficulty.value === "hard"){
-        size = 7;
-    }
-    const numOfCells = size * size;
 
     // CON UN CICLO PRENDO OGNI SINGOLA CELLA
     for(let i = 0; i < numOfCells; i++){
