@@ -68,19 +68,17 @@ function startGame(){
         // MI METTO IN ASCOLTO DEL CLICK SULLA CELLA
         gridCell.addEventListener("click", function(){
             console.log("Hai cliccato la cella", num);
-            // QUANDO L'UTENTE CLICCA IL BACKGROUND-COLOR CAMBIERA'
-            gridCell.classList.add("bg-azzure","pointer-events");
-            console.log(scoreInfo);
-            //INCREMENTO IL CLICK
-            scoreInfo.innerHTML++;
-
             // PRENDO OGNI SINGOLO NUMERO PRESENTE NELL'ARRAY E CONTROLLO SE E' UGUALE AL NUMERO RANDOM GENERATO
-            if(arrayBombs.includes(num)){
-
+            if(arrayBombs.includes(num) === false ){
+                // QUANDO L'UTENTE CLICCA IL BACKGROUND-COLOR CAMBIERA'
+                gridCell.classList.add("bg-azzure","pointer-events");
+                console.log(scoreInfo);
+                //INCREMENTO IL CLICK
+                scoreInfo.innerHTML++;
+            } else{
                 console.log("Hai trovato una bomba!");
                 gridCell.classList.add("bg-red");
                 gridElement.classList.add("pointer-events");
-                scoreInfo.innerHTML--;
 
                 //PRENDO IL DIV CHE INFORMA "IL GIOCO E' TERMINATO" E CI AGGIUNGO D-BLOCK
                 finishedGame.classList.replace("d-none", "d-block");
