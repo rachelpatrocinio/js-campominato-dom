@@ -39,22 +39,10 @@ function startGame(){
     }
     const numOfCells = size * size;
 
-    // // GENERIAMO 16 NUMERI RANDOM DIVERSI FRA LORO
-
+    // // GENERIAMO 16 NUMERI RANDOM DIVERSI FRA LORO RICHIAMANDO UNA FUNCTION
     const randomBombs = 16;
     const arrayBombs = [];
-
-    while (arrayBombs.length < randomBombs) {
-        // Genero un numero casuale
-        const randomNumber = Math.floor(Math.random() * max) + min;
-
-        //SE L'ARRAY VUOTO NON INCLUDE IL NUMERO RANDOM, ALLORA PUSHO IL NUMERO RANDOM NELL'ARRAY
-        if (arrayBombs.includes(randomNumber) === false) {
-            arrayBombs.push(randomNumber);
-        }
-    }
-    console.log("Random Bombs", arrayBombs);
-
+    generateBombs(arrayBombs, randomBombs, min, max);
 
     // CON UN CICLO PRENDO OGNI SINGOLA CELLA
     for(let i = 0; i < numOfCells; i++){
@@ -100,3 +88,16 @@ function startGame(){
         })
     }
 } //function startGame()
+
+function generateBombs(array, maxnum, min, max){
+    while (array.length < maxnum) {
+        // Genero un numero casuale
+        const randomNumber = Math.floor(Math.random() * max) + min;
+
+        //SE L'ARRAY VUOTO NON INCLUDE IL NUMERO RANDOM, ALLORA PUSHO IL NUMERO RANDOM NELL'ARRAY
+        if (array.includes(randomNumber) === false) {
+            array.push(randomNumber);
+        }
+    }
+    console.log("Random Bombs", array);
+}
